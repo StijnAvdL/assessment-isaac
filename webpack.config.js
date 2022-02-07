@@ -1,11 +1,9 @@
 const webpack = require("webpack");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-const dotenv = require("dotenv-webpack");
 
 var argv = require("minimist")(process.argv.slice(2));
 const isWeb = argv && argv.target === "web";
-const envFile = argv && argv.env && argv.env.STAGE ? argv.env.STAGE : "staging";
 const output = isWeb ? "/dist" : "/cordova/www";
 
 module.exports = {
@@ -48,8 +46,7 @@ module.exports = {
       cleanOnceBeforeBuildPatterns: ['**/*']
     }),
     new HtmlWebPackPlugin({ template: "./src/index.html" }),
-    new webpack.HotModuleReplacementPlugin(),
-    new dotenv({ path: "./.env-" + envFile })
+    new webpack.HotModuleReplacementPlugin()
   ],
   devServer: {
     historyApiFallback: true,
