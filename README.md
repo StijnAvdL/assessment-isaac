@@ -1,6 +1,6 @@
-# Team Rockstars Music app
+# Assessment ISAAC
 
-The Team Eockstars Music app project.
+The Assessment for ISAAC
 
 ### Install
 

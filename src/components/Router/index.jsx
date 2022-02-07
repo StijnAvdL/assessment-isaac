@@ -1,5 +1,8 @@
 import PropTypes from 'prop-types'
 import { useObserver } from 'mobx-react'
+import AppBar from '/src/components/AppBar'
+import Users from '/src/components/Users'
+import User from '/src/components/User'
 
 const propTypesView = {
   page: PropTypes.string,
@@ -8,21 +11,29 @@ const propTypesView = {
 }
 
 function Router(props) {
-  const { page, go } = props
+  const { page, params, go, usersModel } = props
   var content = null
 
   console.log('now here!', page)
   switch (page) {
     case '/':
-      console.log('this case!')
-      content = <div>Home</div>
+      content = <Users users={usersModel.users} go={go} />
+      break
+    case '/user':
+      usersModel.getUser(params.id)
+      content = <User model={usersModel} />
       break
     case '/error':
       content = <p>Error</p>
       break
   }
 
-  return useObserver(() => <div>{content}</div>)
+  return useObserver(() => (
+    <div>
+      <AppBar />
+      {content}
+    </div>
+  ))
 }
 
 Router.propTypes = propTypesView

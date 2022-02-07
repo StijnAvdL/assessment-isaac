@@ -1,5 +1,5 @@
 {
-  "name": "team-rockstars-music-app",
+  "name": "assessment-isaac",
   "version": "0.0.1",
   "scripts": {
     "start": "webpack-dev-server --config ./webpack.config.js --mode development",
@@ -45,6 +45,7 @@
     "mobx": "^5.15.6",
     "mobx-react": "^6.2.5",
     "prop-types": "^15.5.10",
+    "qs": "^6.7.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
