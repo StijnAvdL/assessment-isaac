@@ -1,6 +1,7 @@
 const webpack = require("webpack");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+// const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 
 var argv = require("minimist")(process.argv.slice(2));
 const isWeb = argv && argv.target === "web";
@@ -46,7 +47,8 @@ module.exports = {
       cleanOnceBeforeBuildPatterns: ['**/*']
     }),
     new HtmlWebPackPlugin({ template: "./src/index.html" }),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    // new WebpackManifestPlugin({fileName: "manifest.json"})
   ],
   devServer: {
     historyApiFallback: true,
