@@ -13,6 +13,7 @@ const propTypesView = {
 function Router(props) {
   const { page, params, go, usersModel } = props
   var content = null
+  var appBar = <AppBar />
 
   console.log('now here!', page)
   switch (page) {
@@ -21,7 +22,8 @@ function Router(props) {
       break
     case '/user':
       usersModel.getUser(params.id)
-      content = <User model={usersModel} />
+      appBar = <AppBar action={() => go('/')} />
+      content = <User user={usersModel.user} />
       break
     case '/error':
       content = <p>Error</p>
@@ -30,7 +32,7 @@ function Router(props) {
 
   return useObserver(() => (
     <div>
-      <AppBar />
+      {appBar}
       {content}
     </div>
   ))

@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom'
-import App from '/src/viewmodel/App'
+import App from '/src/components/App'
 
 function startWeb() {
   ReactDOM.render(<App />, document.getElementById('app'))

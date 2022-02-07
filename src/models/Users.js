@@ -19,8 +19,8 @@ class Users {
             .then(res => res.json())
             .then(data => {
                 this.users = data.results
-                console.log("data", data)
-                console.log("users", this.users)
+                // console.log("data", data)
+                // console.log("users", this.users)
                 this.init = false;
             })
             .catch(error => {
@@ -31,16 +31,11 @@ class Users {
     }
 
     getUser(id) {
-        this.error = null;
-        this.user = null;
-        this.initUser = true;
-
-        fetch(`https://randomuser.me/api/?login.md5=${id}`)
-            .then(res => res.json())
-            .then(data => {
-                this.user = data.results
-                this.initUser = false;
-            });
+        this.users.forEach(user => {
+            if(user.login.md5 === id) {
+                this.user = user
+            }
+        })
     }
 }
 export default Users
