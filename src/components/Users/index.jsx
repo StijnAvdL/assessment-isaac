@@ -9,6 +9,7 @@ import TableContainer from '@material-ui/core/TableContainer'
 import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
 import FormControl from '@material-ui/core/FormControl'
+import FormLabel from '@material-ui/core/FormLabel'
 import RadioGroup from '@material-ui/core/RadioGroup'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Radio from '@material-ui/core/Radio'
@@ -42,23 +43,23 @@ function Users(props) {
       if(config.filter !== 'all') {
         sortableItems = sortableItems.filter(user => user.gender === config.filter)
       } 
+      console.log("sortableItems", sortableItems)
       return sortableItems
     }
   }, [users, config])
 
   return (
     <div>
-
       <FormControl component="fieldset">
-        <RadioGroup aria-label="gender" name="gender1" value={config.filter} onChange={requestFilter} row >
+      <FormLabel component="legend">Gender</FormLabel>
+        <RadioGroup aria-label="gender" name="gender" value={config.filter} onChange={requestFilter} row >
           <FormControlLabel value="all" control={<Radio />} label="All" />
           <FormControlLabel value="female" control={<Radio />} label="Female" />
           <FormControlLabel value="male" control={<Radio />} label="Male" />
         </RadioGroup>
       </FormControl>
-
       <TableContainer component={Paper}>
-        <Table aria-label="simple table">
+        <Table aria-label="users">
           <TableHead>
             <TableRow>
               <TableCell>

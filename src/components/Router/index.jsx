@@ -15,15 +15,16 @@ function Router(props) {
   var content = null
   var appBar = <AppBar />
 
-  console.log('now here!', page)
   switch (page) {
     case '/':
+      appBar = <AppBar title="Users" />
       content = <Users users={usersModel.users} go={go} />
       break
     case '/user':
       usersModel.getUser(params.id)
-      appBar = <AppBar action={() => go('/')} />
-      content = <User user={usersModel.user} />
+      const user = usersModel.user
+      appBar = <AppBar title={`${user.name.first} ${user.name.last}`} action={() => go('/')} />
+      content = <User user={user} />
       break
     case '/error':
       content = <p>Error</p>

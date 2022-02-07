@@ -13,11 +13,11 @@ function AppBarComponent(props) {
       <AppBar position="static">
         <Toolbar>
           {!action ? null : (
-            <IconButton edge="start" color="inherit" aria-label="open drawer" onClick={action}>
+            <IconButton edge="start" color="inherit" aria-label="back" onClick={action}>
               <BackIcon />
             </IconButton>
           )}
-          <Typography variant="h6" noWrap>
+          <Typography variant="h1" noWrap style={{ fontSize: 20 }}>
             {title}
           </Typography>
         </Toolbar>

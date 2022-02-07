@@ -19,8 +19,6 @@ class Users {
             .then(res => res.json())
             .then(data => {
                 this.users = data.results
-                // console.log("data", data)
-                // console.log("users", this.users)
                 this.init = false;
             })
             .catch(error => {
@@ -32,7 +30,7 @@ class Users {
 
     getUser(id) {
         this.users.forEach(user => {
-            if(user.login.md5 === id) {
+            if (user.login.md5 === id) {
                 this.user = user
             }
         })
