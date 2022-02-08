@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 
 import Button from '@material-ui/core/Button'
 import Table from '@material-ui/core/Table'
@@ -15,7 +16,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Radio from '@material-ui/core/Radio'
 
 function Users(props) {
-  let { users = [], go } = props
+  let { users = [] } = props
   const [config, setConfig] = React.useState({direction: 'ascending', key: 'name', key2: 'first', filter: 'all'})
 
   // sort the user list
@@ -28,6 +29,8 @@ function Users(props) {
   const requestFilter = (input, value) => {
     setConfig({ ...config, filter: value })
   }
+
+  // generate new user list
   const sortedItems = React.useMemo(() => {
     let sortableItems = [...users]
     if (config !== null) {
@@ -72,9 +75,9 @@ function Users(props) {
           </TableHead>
           <TableBody>
             {sortedItems.map((user) => (
-              <TableRow key={user.login.md5} onClick={() => go(`/user?id=${user.login.md5}`)}>
+              <TableRow key={user.login.md5}>
                 <TableCell component="th" scope="row">
-                  {`${user.name.first} ${user.name.last}`}
+                  <Link to={`/user/${user.login.md5}`}>{`${user.name.first} ${user.name.last}`}</Link>
                 </TableCell>
                 <TableCell component="th" scope="row">
                   {user.location.city}

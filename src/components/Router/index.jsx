@@ -2,39 +2,32 @@ import PropTypes from 'prop-types'
 import AppBar from '/src/components/AppBar'
 import Users from '/src/components/Users'
 import User from '/src/components/User'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 const propTypesView = {
   page: PropTypes.string,
-  go: PropTypes.func,
   params: PropTypes.object,
 }
 
 function Router(props) {
-  const { page, params, go, usersModel } = props
-  var content = null
-  var appBar = <AppBar />
-
-  switch (page) {
-    case '/':
-      appBar = <AppBar title="Users" />
-      content = <Users users={usersModel.users} go={go} />
-      break
-    case '/user':
-      usersModel.getUser(params.id)
-      const user = usersModel.user
-      appBar = <AppBar title={`${user.name.first} ${user.name.last}`} action={() => go('/')} />
-      content = <User user={user} />
-      break
-    case '/error':
-      content = <p>Error</p>
-      break
-  }
-
+  const { usersModel } = props
   return (
-    <div>
-      {appBar}
-      {content}
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/">
+          <AppBar title="Users" />
+          <Users users={usersModel.users} />
+        </Route>
+        <Route path="/user/:id">
+          <AppBar title="User" back={true} />
+          <User usersModel={usersModel} />
+        </Route>
+        <Route path="*">
+          <AppBar title="No Match" back={true} />
+          <p>Unknown route</p>
+        </Route>
+      </Switch>
+    </BrowserRouter>
   )
 }
 
