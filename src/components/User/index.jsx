@@ -1,5 +1,3 @@
-import { useObserver } from 'mobx-react'
-
 import React from 'react'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
@@ -11,7 +9,7 @@ import Paper from '@material-ui/core/Paper'
 function User(props) {
   const { user } = props
 
-  return useObserver(() => (
+  return (
     <div>
       <TableContainer component={Paper}>
         <Table aria-label="user">
@@ -60,7 +58,7 @@ function User(props) {
         </Table>
       </TableContainer>
     </div>
-  ))
+  )
 }
 
 export default User

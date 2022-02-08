@@ -1,8 +1,7 @@
-import { useObserver } from 'mobx-react'
 import Popover from '@material-ui/core/Popover'
 
 function Popup(props) {
-  return useObserver(() => (
+  return (
     <Popover
       anchorOrigin={{
         vertical: 'bottom',
@@ -16,7 +15,7 @@ function Popup(props) {
     >
       {props.error || 'Error!'}
     </Popover>
-  ))
+  )
 }
 
 export default Popup

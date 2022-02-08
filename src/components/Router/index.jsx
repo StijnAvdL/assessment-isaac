@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types'
-import { useObserver } from 'mobx-react'
 import AppBar from '/src/components/AppBar'
 import Users from '/src/components/Users'
 import User from '/src/components/User'
@@ -31,12 +30,12 @@ function Router(props) {
       break
   }
 
-  return useObserver(() => (
+  return (
     <div>
       {appBar}
       {content}
     </div>
-  ))
+  )
 }
 
 Router.propTypes = propTypesView
