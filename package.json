@@ -4,7 +4,14 @@
   "scripts": {
     "start": "webpack-dev-server --config ./webpack.config.js --mode development",
     "build": "node ./node_modules/cross-env/src/bin/cross-env.js NODE_ENV=production ./node_modules/webpack/bin/webpack.js --mode=production --config webpack.config.js  --target web",
-    "cordova": "node ./node_modules/cross-env/src/bin/cross-env.js NODE_ENV=development ./node_modules/webpack/bin/webpack.js --mode=development --config webpack.config.js --env.STAGE=staging && cd cordova && cordova prepare && cd .."
+    "cordova": "node ./node_modules/cross-env/src/bin/cross-env.js NODE_ENV=development ./node_modules/webpack/bin/webpack.js --mode=development --config webpack.config.js --env.STAGE=staging && cd cordova && cordova prepare && cd ..",
+    "test": "node ./node_modules/cross-env/src/bin/cross-env.js NODE_OPTIONS=--unhandled-rejections=warn jest"
+  },
+  "jest": {
+    "automock": false,
+    "setupFiles": [
+      "./setupJest.js"
+    ]
   },
   "devDependencies": {
     "babel": "^6.x.x",
@@ -13,6 +20,7 @@
     "babel-loader": "^7.1.2",
     "babel-plugin-react-require": "2.x.x",
     "babel-plugin-react-transform": "^2.0.0",
+    "babel-plugin-root-import": "^6.6.0",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-polyfill": "^6.23.0",
     "babel-preset-es2015": "6.x.x",
@@ -31,6 +39,8 @@
     "eslint-plugin-react-hooks": "^4.1.0",
     "file-loader": "^4.2.0",
     "html-webpack-plugin": "^3.2.0",
+    "jest": "^23.6.0",
+    "jest-fetch-mock": "^3.0.3",
     "react-hot-loader": "^4.12.12",
     "style-loader": "^1.0.0",
     "webpack": "^4.39.3",

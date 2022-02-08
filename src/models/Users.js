@@ -10,7 +10,7 @@ class Users {
 
     constructor() {
         console.log("create user model")
-        this._onReceive();
+        // this._onReceive();
     }
 
     async _onReceive() {
@@ -24,6 +24,9 @@ class Users {
             .catch(error => {
                 this.init = false;
                 this.error = "Could not receive users!";
+            })
+            .finally(() => {
+                return true
             });
     }
 
