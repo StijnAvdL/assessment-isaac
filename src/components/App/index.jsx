@@ -1,7 +1,7 @@
 import { useObserver } from 'mobx-react'
 import Router from '/src/components/Router'
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
-import Users from '/src/models/Users'
+import Users from '/src/service/Users'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import Popover from '/src/components/Popover'
 
