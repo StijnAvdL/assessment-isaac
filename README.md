@@ -7,7 +7,6 @@ The Assessment for ISAAC
 Requirements:
 
 - Node
-- Cordova
 
 ```
 npm install
@@ -19,9 +18,4 @@ npm install
 
 ```
 npm run start
-```
-
-**Update code cordova**
-```
-npm run cordova
 ```
